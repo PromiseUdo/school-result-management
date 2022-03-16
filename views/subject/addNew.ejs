@@ -525,15 +525,15 @@
                                                                         aria-hidden="true">&times;</span></button>
                                                             </div>
                                                             <!-- Create Exam Form -->
-                                                            <form action="/superadmin/add_class" method="POST"
+                                                            <form action="/superadmin/add_subject" method="POST"
                                                                 id="exam-create" class="validated-form" novalidate>
                                                                 <div class="modal-body p-4">
                                                                     <div class="row">
                                                                         <div class="col-md-12">
                                                                             <div class="form-group">
-                                                                                <label>Class Name *</label>
+                                                                                <label>Subject Name *</label>
                                                                                 <input name="subjectName" type="text"
-                                                                                    placeholder="Type Class Name"
+                                                                                    placeholder="Type Subject Name"
                                                                                     class="form-control"
                                                                                     style="width: 100%;">
                                                                             </div>
@@ -621,7 +621,7 @@
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
                                                                             <h5 class="modal-title"
-                                                                                id="editAdminModalLabel">Edit Class</h5>
+                                                                                id="editAdminModalLabel">Edit Subject</h5>
                                                                             <button type="button" class="close"
                                                                                 data-dismiss="modal"
                                                                                 aria-label="Close"><span
@@ -630,7 +630,7 @@
 
                                                                         <!-- Edit Admin Form -->
                                                                         <form
-                                                                            action="/superadmin/edit_class/<%= subject._id %>?_method=PUT"
+                                                                            action="/superadmin/edit_subject/<%= subject._id %>?_method=PUT"
                                                                             method="POST" class="exam-edit" novalidate
                                                                             class="validated-form">
                                                                             <div class="modal-body p-4">
@@ -678,7 +678,7 @@
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
                                                                             <h5 class="modal-title"
-                                                                                id="deleteAdminModalLabel">Delete Class
+                                                                                id="deleteAdminModalLabel">Delete Subject
                                                                             </h5>
                                                                             <button type="button" class="close"
                                                                                 data-dismiss="modal"
@@ -688,11 +688,12 @@
 
                                                                         <!-- Delete Admin Form -->
                                                                         <form
-                                                                            action="/superadmin/edit_class/<%= subject._id %>?_method=DELETE"
+                                                                            action="/superadmin/edit_subject/<%= subject._id %>?_method=DELETE"
                                                                             method="POST" class="admin-delete">
                                                                             <div class="modal-body p-4">
                                                                                 <p>Are you sure you want to delete <%=
-                                                                                        subject.subjectName %>?</p>
+                                                                                        subject.subjectName %>?</p>                                            
+                                                                                <small class="text-muted">Note all records about this subject will be lost!</small>
                                                                                 <input type="hidden" name="id"
                                                                                     value="<%=subject._id %>">
                                                                             </div>

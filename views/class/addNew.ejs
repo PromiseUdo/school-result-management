@@ -647,6 +647,8 @@
                                                                     <form action="/superadmin/edit_class/<%= classCat._id %>?_method=DELETE" method="POST" class="admin-delete">
                                                                         <div class="modal-body p-4">
                                                                             <p>Are you sure you want to delete <%= classCat.className %>?</p>
+
+                                                                            <small class="text-muted">Note all records about this class will be lost!</small>
                                                                             <input type="hidden" name="id" value="<%=classCat._id %>">
                                                                         </div>
                                                                         <div class="modal-footer">

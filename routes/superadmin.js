@@ -48,6 +48,13 @@ router
   .put(classCat.updateClassCat)
   .delete(classCat.deleteClassCat)
 
-router.route('/add_subject').get(subject.renderAddSubject)
+router.route('/add_subject')
+  .get(subject.renderAddSubject)
+  .post(subject.createNewSubject)
+
+router.route('/edit_subject/:id')
+  .put(subject.updateSubject)
+  .delete(subject.deleteSubject)
 
 module.exports = router
+
