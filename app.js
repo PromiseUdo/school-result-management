@@ -15,6 +15,7 @@ global.__basedir = __dirname
 
 //require the routes
 const superAdminRoutes = require('./routes/superadmin')
+const authRoutes = require('./routes/auth')
 
 //connection with database
 mongoose.connect('mongodb://localhost:27017/rms', {
@@ -53,6 +54,7 @@ app.use(cors());
 
 //middleware to use the routes
 app.use('/superadmin', superAdminRoutes)
+app.use('/auth', authRoutes);
 
 app.get('/', (req, res) => {
   res.render('index')
