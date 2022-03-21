@@ -6,55 +6,63 @@ const result = require('../controllers/result')
 const teacher = require('../controllers/teacher')
 const classCat = require('../controllers/class')
 const subject = require('../controllers/subject')
+const { cookieJwtAuth } = require('../middleware/cookieJwtAuth')
 
-router.route('/index').get(superadmin.renderDashboard)
+router.route('/dashboard').get(cookieJwtAuth, superadmin.renderDashboard)
 
 router
   .route('/add_new_student')
-  .get(student.renderAddNewStudent)
-  .post(student.createNewStudent)
+  .get(cookieJwtAuth, student.renderAddNewStudent)
+  .post(cookieJwtAuth, student.createNewStudent)
 
-router.route('/promote_all_students').get(student.renderPromoteAllStudent)
+router
+  .route('/promote_all_students')
+  .get(cookieJwtAuth, student.renderPromoteAllStudent)
 
-router.route('/promote_some_students').get(student.renderSomeStudents)
+router
+  .route('/promote_some_students')
+  .get(cookieJwtAuth, student.renderSomeStudents)
 
-router.route('/demote_student').get(student.renderDemoteStudent)
+router.route('/demote_student').get(cookieJwtAuth, student.renderDemoteStudent)
 
-router.route('/view_students').get(student.renderViewStudents)
+router.route('/view_students').get(cookieJwtAuth, student.renderViewStudents)
 
-router.route('/upload_results').get(result.renderUploadResults)
+router.route('/upload_results').get(cookieJwtAuth, result.renderUploadResults)
 
-router.route('/result_by_subject').get(result.renderResultBySubject)
+router
+  .route('/result_by_subject')
+  .get(cookieJwtAuth, result.renderResultBySubject)
 
-router.route('/result_by_class').get(result.renderResultsByClass)
+router.route('/result_by_class').get(cookieJwtAuth, result.renderResultsByClass)
 
-router.route('/publish_result').get(result.renderPublishResults)
+router.route('/publish_result').get(cookieJwtAuth, result.renderPublishResults)
 
-router.route('/add_teacher').get(teacher.renderAddTeacher)
+router.route('/add_teacher').get(cookieJwtAuth, teacher.renderAddTeacher)
 
-router.route('/view_teachers').get(teacher.renderViewTeachers)
+router.route('/view_teachers').get(cookieJwtAuth, teacher.renderViewTeachers)
 
-router.route('/edit_teacher').get(teacher.renderEditTeacher)
+router.route('/edit_teacher').get(cookieJwtAuth, teacher.renderEditTeacher)
 
-router.route('/edit_student').get(student.renderEditStudent)
+router.route('/edit_student').get(cookieJwtAuth, student.renderEditStudent)
 
 router
   .route('/add_class')
-  .get(classCat.renderAddClass)
-  .post(classCat.createNewClass)
+  .get(cookieJwtAuth, classCat.renderAddClass)
+  .post(cookieJwtAuth, classCat.createNewClass)
 
 router
   .route('/edit_class/:id')
-  .put(classCat.updateClassCat)
-  .delete(classCat.deleteClassCat)
+  .put(cookieJwtAuth, classCat.updateClassCat)
+  .delete(cookieJwtAuth, classCat.deleteClassCat)
 
-router.route('/add_subject')
-  .get(subject.renderAddSubject)
-  .post(subject.createNewSubject)
+router
+  .route('/add_subject')
+  .get(cookieJwtAuth, subject.renderAddSubject)
+  .post(cookieJwtAuth, subject.createNewSubject)
 
-router.route('/edit_subject/:id')
-  .put(subject.updateSubject)
-  .delete(subject.deleteSubject)
+router
+  .route('/edit_subject/:id')
+  .put(cookieJwtAuth, subject.updateSubject)
+  .delete(cookieJwtAuth, subject.deleteSubject)
 
 module.exports = router
-

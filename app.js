@@ -4,12 +4,14 @@ const ejsMate = require('ejs-mate')
 const session = require('express-session')
 const methodOverride = require('method-override')
 const flash = require('connect-flash')
+const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose')
 const fileUpload = require('express-fileupload')
 const cors = require('cors')
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
-const Student = require('./models/student')
+const Student = require('./models/users')
+
 
 global.__basedir = __dirname
 
@@ -51,13 +53,15 @@ app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(cors());
+app.use(cookieParser())
+
 
 //middleware to use the routes
 app.use('/superadmin', superAdminRoutes)
 app.use('/auth', authRoutes);
 
 app.get('/', (req, res) => {
-  res.render('index')
+  res.render('auth/signin')
 })
 
 app.get('*', (req, res) => {

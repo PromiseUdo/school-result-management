@@ -2,8 +2,11 @@ const mongoose = require('mongoose')
 const passportLocalMongoose = require('passport-local-mongoose')
 const Schema = mongoose.Schema
 
-const studentSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
   passportUrl: {
+    type: String,
+  },
+  username:{
     type: String,
   },
   firstname: {
@@ -75,6 +78,6 @@ const studentSchema = new mongoose.Schema({
   },
 })
 
-studentSchema.plugin(passportLocalMongoose)
+userSchema.plugin(passportLocalMongoose)
 
-module.exports = mongoose.model('Student', studentSchema)
+module.exports = mongoose.model('User', userSchema)

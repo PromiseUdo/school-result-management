@@ -1,4 +1,4 @@
-const Student = require('../models/student')
+const Student = require('../models/users')
 
 module.exports.renderAddNewStudent = (req, res) => {
   res.render('student/new')

@@ -1,3 +1,3 @@
 module.exports.renderDashboard = (req, res) => {
-  res.render('superAdmin/index')
+  res.render('superAdmin/dashboard')
 }
