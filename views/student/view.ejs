@@ -865,29 +865,35 @@
                                     <div class="card-header">
                                         <h3 class="card-title">View Student in Class</h3>
                                     </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="input-group mb-3">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text">Class</span>
+                                    
+                                        <div class="card-body">
+                                            <form action="/superadmin/view_students" method="post">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="input-group mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">Class</span>
+                                                            </div>
+                                                            <select class="form-control select2" name="selectClass" id="">
+                                                                <option disabled>-Pick A Class-</option>
+                                                                <% for (let classCat of classCats){ %>
+                                                                    <option value="<%= classCat.className %>">
+                                                                        <%= classCat.className %>
+                                                                    </option>
+                                                                    <% } %>
+                                                            </select>
+                                                        </div>
                                                     </div>
-                                                    <select class="form-control select2" name="" id="">
-                                                        <option selected disabled value="">-Pick a Class-</option>
-                                                        <option value="">JSS1</option>
-                                                        <option value="">JSS2</option>
-                                                    </select>
+                                                    <div class="col-md-4">
+                                                        <button type="submit" class="btn btn-info">VIEW STUDENTS</button>
+                                    
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <button class="btn btn-info">VIEW STUDENTS</button>
-                                
-                                            </div>
+                                            </form>
+                                            <!-- /input-group -->
                                         </div>
-                                        <!-- /input-group -->
+                                        <!-- /.card-body -->
                                     </div>
-                                    <!-- /.card-body -->
-                                </div>
 
 
 
@@ -901,11 +907,12 @@
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>S/N</th>
                                                 <th>Photo</th>
-                                                <th>Registration Number</th>
                                                 <th>Name of Student</th>
                                                 <th>Class</th>
+                                                <th>Fee Status</th>
+                                                <th>Result Pin</th>
+                                                <th>Times Used</th>
                                                 <th>Guardian Name</th>
                                                 <th>Guardian Phone</th>
                                                 <th></th>
@@ -913,102 +920,84 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>Trident</td>
-                                                <td><img height="75px" width="75px" src="/assets/img/2.jpg"/></td>
-                                                <td>Win 95+</td>
-                                                <td> 4</td>
-                                                <td>X</td>
-                                                <td>X</td>
-                                                <td>X</td>
-                                                <td><button class="btn btn-info">Edit</button></td>
-                                                <td><button class="btn btn-danger">Delete</button></td>
-                                            </tr>
-                                            <tr>
-                                               <td>Trident</td>
-                                                <td><img height="75px" width="75px" src="/assets/img/2.jpg"/></td>
-                                                <td>Win 95+</td>
-                                                <td> 4</td>
-                                                <td>X</td>
-                                                <td>X</td>
-                                                <td>X</td>
-                                                <td><button class="btn btn-info">Edit</button></td>
-                                                <td><button class="btn btn-danger">Delete</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Trident</td>
-                                                <td><img height="75px" width="75px" src="/assets/img/2.jpg" /></td>
-                                                <td>Win 95+</td>
-                                                <td> 4</td>
-                                                <td>X</td>
-                                                <td>X</td>
-                                                <td>X</td>
-                                                <td><button class="btn btn-info">Edit</button></td>
-                                                <td><button class="btn btn-danger">Delete</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Trident</td>
-                                                <td><img height="75px" width="75px" src="/assets/img/2.jpg" /></td>
-                                                <td>Win 95+</td>
-                                                <td> 4</td>
-                                                <td>X</td>
-                                                <td>X</td>
-                                                <td>X</td>
-                                                <td><button class="btn btn-info">Edit</button></td>
-                                                <td><button class="btn btn-danger">Delete</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Trident</td>
-                                                <td><img height="75px" width="75px" src="/assets/img/2.jpg" /></td>
-                                                <td>Win 95+</td>
-                                                <td> 4</td>
-                                                <td>X</td>
-                                                <td>X</td>
-                                                <td>X</td>
-                                                <td><button class="btn btn-info">Edit</button></td>
-                                                <td><button class="btn btn-danger">Delete</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Trident</td>
-                                                <td><img height="75px" width="75px" src="/assets/img/2.jpg" /></td>
-                                                <td>Win 95+</td>
-                                                <td> 4</td>
-                                                <td>X</td>
-                                                <td>X</td>
-                                                <td>X</td>
-                                                <td><button class="btn btn-info">Edit</button></td>
-                                                <td><button class="btn btn-danger">Delete</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Trident</td>
-                                                <td><img height="75px" width="75px" src="/assets/img/2.jpg" /></td>
-                                                <td>Win 95+</td>
-                                                <td> 4</td>
-                                                <td>X</td>
-                                                <td>X</td>
-                                                <td>X</td>
-                                                <td><button class="btn btn-info">Edit</button></td>
-                                                <td><button class="btn btn-danger">Delete</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Trident</td>
-                                                <td><img height="75px" width="75px" src="/assets/img/2.jpg" /></td>
-                                                <td>Win 95+</td>
-                                                <td> 4</td>
-                                                <td>X</td>
-                                                <td>X</td>
-                                                <td>X</td>
-                                                <td><button class="btn btn-info">Edit</button></td>
-                                                <td><button class="btn btn-danger">Delete</button></td>
-                                            </tr>
+                                            <%for(let student of students){%>
+                                                <tr>
+                                                    <td><img height="75px" width="75px" src="<%=student.passportUrl%>" /></td>
+                                                    <td><%=student.lastname%> <%=student.firstname%></td>
+                                                    <td><%=student.currClass%></td>
+                                                    <td><%=student.feeStatus%></td>
+                                                    <td><%=student.studentPin%></td>
+                                                    <td><%=student.numPinUsed%></td>
+                                                    <td><%=student.parentName%></td>
+                                                    <td><%=student.phone%></td>
+                                                    <td>
+                                                        <!-- Edit Modal Button -->
+                                                        <a href="/superadmin/edit_student/<%= student._id %>"><i class="fas fa-pen text-warning"></i></a>
+                                                        <!-- Edit Modal Button -->
+
+
+
+
+                                                    </td>
+
+
+
+
+
+
+                                                    <!-- Delete Teacher Module -->
+                                                    <td class="text-center">
+                                                        <a href="#" data-toggle="modal" data-target="#deleteAdminModal<%= student._id %>"><i
+                                                                class="far fa-trash-alt text-danger"></i></a>
+                                                        <!-- Delete Modal Button -->
+                                                    
+                                                        <!-- Delete Admin Modal -->
+                                                        <div class="modal fade" id="deleteAdminModal<%= student._id %>" tabindex="-1"
+                                                            aria-labelledby="deleteAdminModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="deleteAdminModalLabel">Delete Student
+                                                                        </h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                                                                aria-hidden="true">&times;</span></button>
+                                                                    </div>
+                                                    
+                                                                    <!-- Delete Admin Form -->
+                                                                    <form action="/superadmin/delete_student/<%= student._id %>?_method=DELETE" method="POST"
+                                                                        class="admin-delete">
+                                                                        <div class="modal-body p-4">
+                                                                            <p>Are you sure you want to delete <%= student.lastname %>
+                                                                                    <%= student.firstname %>?</p>
+                                                                            <small class="text-muted">Note all records about this student will be lost!</small>
+                                                                            <input type="hidden" name="id" value="<%=student._id %>">
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="submit" class="btn btn-primary">Delete</button>
+                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                                        </div>
+                                                                    </form>
+                                                                    <!-- Delete Admin Form -->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Delete Admin Modal -->
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    </td>
+                                                </tr>
+                                            <%}%>
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <th>S/N</th>
                                                 <th>Photo</th>
-                                                <th>Registration Number</th>
                                                 <th>Name of Student</th>
                                                 <th>Class</th>
+                                                <th>Fee Status</th>
+                                                <th>Result Pin</th>
+                                                <th>Times Used</th>
                                                 <th>Guardian Name</th>
                                                 <th>Guardian Phone</th>
                                                 <th></th>
@@ -1085,3 +1074,5 @@
             });
         });
     </script>
+
+

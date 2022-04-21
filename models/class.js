@@ -1,14 +1,17 @@
 const mongoose = require('mongoose')
-const passportLocalMongoose = require('passport-local-mongoose')
-const Teachers = require('./teacher')
+const Teachers = require('./users')
 const Schema = mongoose.Schema
 
 const classSchema = new mongoose.Schema({
   className: {
     type: String,
   },
-  numOfStudents:{
-      type:Number
+  numOfStudents: {
+    type: Number,
+  },
+  school: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'School',
   },
   classTeachers: [
     {

@@ -20,6 +20,8 @@
   <link rel="stylesheet" href="/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="/plugins/summernote/summernote-bs4.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="/javascripts/countrystatecity.js"></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -518,7 +520,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Surname *</label>
-                            <input name="surname" type="text" placeholder="Surname" class="form-control" style="width: 100%;">
+                            <input name="lastname" type="text" placeholder="Surname" class="form-control" style="width: 100%;">
                                
                         </div>
                         <!-- /.form-group -->
@@ -559,8 +561,8 @@
                             <label>Gender</label>
                             <select name="gender" class="form-control select2" style="width: 100%;">
                                 <option disabled selected="selected">-Pick a gender-</option>
-                                <option>Female</option>
-                                <option>Male</option>
+                                <option value="female">Female</option>
+                                <option value="male">Male</option>
                             </select>
                         </div>
                     </div>
@@ -590,30 +592,24 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Country</label>
-                            <select name="country" class="form-control select2" style="width: 100%;">
-                                <option disabled selected="selected">-Pick a Country-</option>
-                                <option>Nigeria</option>
-                                <option>Ghana</option>
+                            <select name="country" class="countries form-control" id="countryId" style="width: 100%;">
+                                <option disabled selected="selected">Select Country</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>State of Origin</label>
-                            <select name="state" class="form-control select2" style="width: 100%;">
-                                <option disabled selected="selected">-Pick a State-</option>
-                                <option>Abia</option>
-                                <option>Adamawa</option>
+                            <select name="state" class="states form-control" id="stateId" style="width: 100%;">
+                                <option disabled selected="selected">Select State</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Local Govt. of Origin</label>
-                            <select name="lga" class="form-control select2" style="width: 100%;">
-                                <option disabled selected="selected">-Pick a State-</option>
-                                <option>Umuahia</option>
-                                <option>Aba</option>
+                            <select name="lga" class="cities form-control" id="cityId" style="width: 100%;">
+                                <option disabled selected="selected">Select LGA</option>
                             </select>
                         </div>
                     </div>
@@ -622,11 +618,22 @@
                 <!-- 4th row -->
                 
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label>Home Address *</label>
                             <input name="address" type="text" placeholder="Home Address" class="form-control" style="width: 100%;">
                         </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Student Fee Status *</label>
+                        <select name="feeStatus" class="form-control select2" style="width: 100%;">
+                                <option disabled selected="selected">-Pick a Status-</option>
+                                <option value="No Payment">No Payment</option>
+                                <option value="Partial Payment">Partial Payment</option>
+                                <option value="Full Payment">Complete Payment</option>
+                            </select>
+                      </div>
                     </div>
                 </div>
 
@@ -642,11 +649,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Relationship*</label>
-                            <select name="relationship" class="form-control select2" style="width: 100%;">
-                                <option disabled selected="selected">-Pick a Relationship-</option>
-                                <option>Abia</option>
-                                <option>Adamawa</option>
-                            </select>
+                            <input class="form-control" name="relationship" type="text" placeholder="Next of Kin Relationship">
                         </div>
                     </div>
                 </div>
@@ -673,7 +676,7 @@
                 <!-- 3rd row -->
                 
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label>Name of Former School Attended</label>
                             <input name="formerSchool" type="text" placeholder="Former School Attended" class="form-control" style="width: 100%;">
@@ -689,6 +692,32 @@
                         <div class="form-group">
                             <label>End Year</label>
                             <input name="endYear" type="text" placeholder="End Year" class="form-control" style="width: 100%;">
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label>Registered Class*</label>
+                            <select class="form-control select2" name="regClass" id="" required>
+                              <option disabled>-Pick A Class-</option>
+                              <% for (let classCat of classCats){ %>
+                                <option value="<%= classCat.className %>">
+                                  <%= classCat.className %>
+                                </option>
+                                <% } %>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label>Current Class*</label>
+                            <select class="form-control select2" name="currClass" id="" >
+                              <option disabled>-Pick A Class-</option>
+                              <% for (let classCat of classCats){ %> 
+                                <option value="<%= classCat.className %>"><%= classCat.className %></option>
+                              <% } %>
+                            </select>
                         </div>
                     </div>
                 </div>

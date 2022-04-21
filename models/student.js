@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
-const passportLocalMongoose = require('passport-local-mongoose')
 const Schema = mongoose.Schema
+const CheckerPin = require('./checkerPin')
 
-const userSchema = new mongoose.Schema({
+const studentSchema = new mongoose.Schema({
   passportUrl: {
     type: String,
   },
@@ -37,6 +37,9 @@ const userSchema = new mongoose.Schema({
   weight: {
     type: Number,
   },
+  feeStatus: {
+    type: String,
+  },
   height: {
     type: Number,
   },
@@ -67,6 +70,18 @@ const userSchema = new mongoose.Schema({
   formerSchool: {
     type: String,
   },
+  startYear: {
+    type: Number,
+  },
+  endYear: {
+    type: Number,
+  },
+  regClass: {
+    type: String,
+  },
+  currClass: {
+    type: String,
+  },
   sportHouse: {
     type: String,
   },
@@ -76,8 +91,12 @@ const userSchema = new mongoose.Schema({
   disabilities: {
     type: String,
   },
-  userPassword: {
-    type: String,
+  studentPin: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'CheckerPin',
+  },
+  numPinUsed: {
+    type: Number,
   },
   school: {
     type: mongoose.Schema.Types.ObjectId,
@@ -85,6 +104,4 @@ const userSchema = new mongoose.Schema({
   },
 })
 
-userSchema.plugin(passportLocalMongoose)
-
-module.exports = mongoose.model('User', userSchema)
+module.exports = mongoose.model('Student', studentSchema)

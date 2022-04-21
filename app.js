@@ -12,12 +12,12 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const Student = require('./models/users')
 
-
 global.__basedir = __dirname
 
 //require the routes
 const superAdminRoutes = require('./routes/superadmin')
 const authRoutes = require('./routes/auth')
+const accountRoutes = require('./routes/account')
 
 //connection with database
 mongoose.connect('mongodb://localhost:27017/rms', {
@@ -40,7 +40,6 @@ const app = express()
 //enable file upload
 app.use(fileUpload({ createParentPath: true }))
 
-
 app.use(express.json())
 
 app.engine('ejs', ejsMate)
@@ -52,16 +51,20 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 app.use(express.static(path.join(__dirname, 'public')))
-app.use(cors());
-app.use(cookieParser())
 
+// app.use('/passportUploads', express.static('passportUploads'))
+
+app.use(cors())
+app.use(cookieParser())
 
 //middleware to use the routes
 app.use('/superadmin', superAdminRoutes)
-app.use('/auth', authRoutes);
+app.use('/auth', authRoutes)
 
-app.get('/', (req, res) => {
-  res.render('auth/signin')
+app.use('/account', accountRoutes)
+
+app.use('/', (req, res) => {
+  res.render('index')
 })
 
 app.get('*', (req, res) => {

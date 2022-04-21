@@ -25,9 +25,12 @@ router
 
 router.route('/demote_student').get(cookieJwtAuth, student.renderDemoteStudent)
 
-router.route('/view_students').get(cookieJwtAuth, student.renderViewStudents)
 
 router.route('/upload_results').get(cookieJwtAuth, result.renderUploadResults)
+
+router.route('/view_students')
+  .get(cookieJwtAuth, student.renderSelectClass)
+  .post(cookieJwtAuth, student.fetchSelectedClass)
 
 router
   .route('/result_by_subject')
@@ -37,13 +40,19 @@ router.route('/result_by_class').get(cookieJwtAuth, result.renderResultsByClass)
 
 router.route('/publish_result').get(cookieJwtAuth, result.renderPublishResults)
 
-router.route('/add_teacher').get(cookieJwtAuth, teacher.renderAddTeacher)
+router.route('/settings').get(cookieJwtAuth, superadmin.renderSettings)
+
+router
+  .route('/add_teacher')
+  .get(cookieJwtAuth, teacher.renderAddTeacher)
+  .post(cookieJwtAuth, teacher.createNewTeacher)
 
 router.route('/view_teachers').get(cookieJwtAuth, teacher.renderViewTeachers)
 
-router.route('/edit_teacher').get(cookieJwtAuth, teacher.renderEditTeacher)
-
-router.route('/edit_student').get(cookieJwtAuth, student.renderEditStudent)
+router
+  .route('/edit_student/:id')
+  .get(cookieJwtAuth, student.renderEditStudent)
+  .put(cookieJwtAuth, student.updateStudent)
 
 router
   .route('/add_class')
@@ -64,5 +73,14 @@ router
   .route('/edit_subject/:id')
   .put(cookieJwtAuth, subject.updateSubject)
   .delete(cookieJwtAuth, subject.deleteSubject)
+
+router.route('/delete_teacher/:id').delete(cookieJwtAuth, teacher.deleteTeacher)
+
+router.route('/delete_student/:id').delete(cookieJwtAuth, student.deleteStudent)
+
+router
+  .route('/edit_teacher/:id')
+  .get(cookieJwtAuth, teacher.renderEditTeacher)
+  .put(cookieJwtAuth, teacher.editTeacher)
 
 module.exports = router
